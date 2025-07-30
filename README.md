@@ -51,19 +51,19 @@ This is a **modern redesign** of the LaundryKu Premium website, built with Next.
 - **Website**: [https://laundryku-kappa.vercel.app/](https://laundryku-kappa.vercel.app/)
 - **Deployed on**: Vercel
 - **Status**: Live and fully functional
-- **Developer Portfolio**: [https://hilmiportfoliodev.vercel.app/](https://hilmiportfoliodev.vercel.app/)
+- **UI/UX Designer Portfolio**: [https://hilmiportfoliodev.vercel.app/](https://hilmiportfoliodev.vercel.app/)
 
 ### 📝 **Disclaimer**
 This is a redesign project for educational and portfolio purposes. All content, branding, and business information belong to **LaundryKu Premium**. This project demonstrates modern web development practices and design implementation.
 
 ### 🎓 **Study Case Project**
-This redesign is part of **Botokan Dibimbing Chapter 41** study case, where I was tasked with redesigning the LaundryKu Premium website to enhance my web development skills and showcase modern design practices.
+This redesign is part of **BootCamp Dibimbing Chapter 41** study case, where I was tasked with redesigning the LaundryKu Premium website to enhance my UI/UX Design skills and showcase modern design practices.
 
-#### 📚 **About Botokan Dibimbing**
-- **Program**: Web Development Bootcamp
-- **Chapter**: 41 - Advanced UI/UX Design
-- **Objective**: Redesign existing website with modern technologies
-- **Focus**: Next.js, TypeScript, Tailwind CSS, and responsive design
+#### 📚 **About BootCamp Dibimbing**
+- **Program**: UI/UX Design Bootcamp
+- **Chapter**: 41 - Advanced UI/UX Design Session
+- **Objective**: Redesign existing website with modern UI/UX principles
+- **Focus**: User Experience Design, Visual Design, Responsive Design, and Modern Web Technologies
 
 ### 🔄 **What's Different from Original**
 - **Modern Tech Stack**: Next.js 14, TypeScript, Tailwind CSS
@@ -71,6 +71,7 @@ This redesign is part of **Botokan Dibimbing Chapter 41** study case, where I wa
 - **Advanced Features**: Anti-inspect protection, loading animations
 - **Better Performance**: Optimized images and code structure
 - **Mobile-First**: Fully responsive design approach
+- **Design-Focused**: Prioritizing user experience and visual design principles
 
 ---
 
@@ -321,9 +322,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - This is a **redesign project** for educational purposes
 - All business content and branding belong to **LaundryKu Premium**
 - The original business is not affiliated with this redesign
-- This project demonstrates modern web development practices
-- **Study Case**: Part of Botokan Dibimbing Chapter 41 curriculum
-- **Developer**: Created by [Hilmi](https://hilmiportfoliodev.vercel.app/) for skill enhancement
+- This project demonstrates modern UI/UX design practices
+- **Study Case**: Part of BootCamp Dibimbing Chapter 41 UI/UX Design curriculum
+- **Designer**: Created by [Hilmi](https://hilmiportfoliodev.vercel.app/) for UI/UX skill enhancement
 
 ---
 
@@ -369,9 +370,9 @@ We welcome contributions! Please feel free to submit a Pull Request.
 
 **🌐 Live Demo**: [https://laundryku-kappa.vercel.app/](https://laundryku-kappa.vercel.app/)
 
-**👨‍💻 Developer Portfolio**: [https://hilmiportfoliodev.vercel.app/](https://hilmiportfoliodev.vercel.app/)
+**🎨 UI/UX Designer Portfolio**: [https://hilmiportfoliodev.vercel.app/](https://hilmiportfoliodev.vercel.app/)
 
-**📧 Developer Contact**: For questions about this redesign project
+**📧 Designer Contact**: For questions about this redesign project
 
 <div align="center">
 
@@ -387,8 +388,8 @@ We welcome contributions! Please feel free to submit a Pull Request.
 
 **Made with ❤️ for educational and portfolio purposes**
 
-*Botokan Dibimbing Chapter 41 Study Case • Modern Web Development • UI/UX Design • Next.js*
+*BootCamp Dibimbing Chapter 41 UI/UX Design Study Case • Modern Design Principles • User Experience • Next.js*
 
-**👨‍💻 Developer**: [Hilmi](https://hilmiportfoliodev.vercel.app/)
+**🎨 UI/UX Designer**: [Hilmi](https://hilmiportfoliodev.vercel.app/)
 
 </div>

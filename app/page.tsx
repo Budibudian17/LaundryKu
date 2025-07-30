@@ -42,7 +42,7 @@ const LaundryKuWebsiteClient = () => {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set())
   const [showPrivacyWarning, setShowPrivacyWarning] = useState(false)
 
-  // Anti-inspect functionality
+  // Anti-inspect functionality - Prevent DevTools access while allowing normal interactions
   useEffect(() => {
     const preventInspect = (e: KeyboardEvent) => {
       // Prevent F12
@@ -59,7 +59,7 @@ const LaundryKuWebsiteClient = () => {
         return false
       }
       
-      // Prevent Ctrl+Shift+C (Windows) or Cmd+Option+C (Mac)
+      // Prevent Ctrl+Shift+C (Windows) or Cmd+Option+C (Mac) - Developer Tools
       if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'C') {
         e.preventDefault()
         setShowPrivacyWarning(true)
@@ -110,14 +110,10 @@ const LaundryKuWebsiteClient = () => {
       }, 500)
     }
 
-    // Add event listeners
+    // Add event listeners - Prevent DevTools access
     document.addEventListener('keydown', preventInspect)
     document.addEventListener('contextmenu', preventRightClick)
     preventDevTools()
-
-    // Disable text selection
-    document.addEventListener('selectstart', (e) => e.preventDefault())
-    document.addEventListener('dragstart', (e) => e.preventDefault())
 
     // Additional protection
     const preventInspectElement = () => {

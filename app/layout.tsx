@@ -52,15 +52,15 @@ html {
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              // Anti-inspect script
+              // Anti-inspect script - Prevent DevTools access while allowing normal interactions
               (function() {
-                // Disable right click
+                // Disable right click to prevent "Inspect" option
                 document.addEventListener('contextmenu', function(e) {
                   e.preventDefault();
                   return false;
                 });
                 
-                // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+                // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U (DevTools shortcuts)
                 document.addEventListener('keydown', function(e) {
                   if (e.key === 'F12' || 
                       ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
@@ -68,18 +68,6 @@ html {
                     e.preventDefault();
                     return false;
                   }
-                });
-                
-                // Disable text selection
-                document.addEventListener('selectstart', function(e) {
-                  e.preventDefault();
-                  return false;
-                });
-                
-                // Disable drag and drop
-                document.addEventListener('dragstart', function(e) {
-                  e.preventDefault();
-                  return false;
                 });
                 
                 // Detect devtools
