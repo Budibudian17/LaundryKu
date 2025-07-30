@@ -7,6 +7,21 @@ export const metadata: Metadata = {
   title: 'LaundryKu',
   description: 'LaundryKu',
   generator: 'LaundryKu',
+  openGraph: {
+    title: 'LaundryKu',
+    description: 'LaundryKu',
+    images: [
+      {
+        url: '/images/logo1.jpg',
+        width: 800,
+        height: 600,
+        alt: 'LaundryKu Logo',
+      },
+    ],
+  },
+  icons: {
+    icon: '/images/logo1.jpg',
+  },
 }
 
 export default function RootLayout({
