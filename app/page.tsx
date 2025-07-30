@@ -405,9 +405,9 @@ const LaundryKuWebsiteClient = () => {
                   </div>
                 </div>
 
-                <div className="absolute -top-4 right-28 bg-yellow-400 text-green-900 px-4 py-2 rounded-xl shadow-lg font-bold">
+                <div className="absolute -top-2 right-4 md:-top-4 md:right-28 bg-yellow-400 text-green-900 px-2 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl shadow-lg font-bold">
                   <div className="text-center">
-                    <p className="text-sm font-bold">24H</p>
+                    <p className="text-xs md:text-sm font-bold">24H</p>
                     <p className="text-xs">Express</p>
                   </div>
                 </div>
@@ -696,12 +696,12 @@ const LaundryKuWebsiteClient = () => {
                 height={400}
                 className="w-full h-auto rounded-2xl shadow-xl"
               />
-              <div className="absolute -top-4 -right-4 bg-red-500 text-white px-4 py-2 rounded-xl shadow-lg animate-pulse">
-                <div className="text-center">
-                  <p className="text-sm font-bold">GRATIS</p>
-                  <p className="text-xs">ONGKIR!</p>
+                              <div className="absolute -top-2 -right-2 md:-top-4 md:-right-4 bg-red-500 text-white px-2 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl shadow-lg animate-pulse">
+                  <div className="text-center">
+                    <p className="text-xs md:text-sm font-bold">GRATIS</p>
+                    <p className="text-xs">ONGKIR!</p>
+                  </div>
                 </div>
-              </div>
             </div>
           </div>
         </div>
@@ -949,7 +949,7 @@ const LoadingScreen = () => {
     "Memuat layanan premium...",
     "Menyiapkan katalog layanan...",
     "Memuat informasi outlet...",
-    "Menyiapkan sistem booking...",
+    "Menyiapkan promo spesial...",
     "Hampir selesai..."
   ]
 
@@ -960,9 +960,10 @@ const LoadingScreen = () => {
           clearInterval(progressInterval)
           return 100
         }
-        return prev + 1
+        // Steady progress to 100%
+        return prev + 2
       })
-    }, 50) // Slower progress for longer loading
+    }, 80) // Moderate speed - about 4 seconds total
 
     const textInterval = setInterval(() => {
       setLoadingStep(prev => {
@@ -972,7 +973,7 @@ const LoadingScreen = () => {
         }
         return prev + 1
       })
-    }, 800) // Change text every 800ms
+    }, 1000) // Change text every 1 second
 
     return () => {
       clearInterval(progressInterval)
@@ -1024,7 +1025,7 @@ const LoadingScreen = () => {
         </div>
 
         {/* Progress percentage */}
-        <p className="text-sm text-gray-600 mb-2">{progress}%</p>
+        <p className="text-sm text-gray-600 mb-2" data-progress>{progress}%</p>
 
         {/* Loading text */}
         <p className="text-gray-600 font-medium transition-all duration-300">{loadingText}</p>
@@ -1039,7 +1040,27 @@ const LoadingScreen = () => {
 }
 
 // Export the client component with dynamic import to prevent hydration issues
-export default dynamic(() => Promise.resolve(LaundryKuWebsiteClient), {
+export default dynamic(() => {
+  return new Promise<typeof LaundryKuWebsiteClient>((resolve) => {
+    // Simulate loading time - component will only load after progress reaches 100%
+    const checkProgress = () => {
+      const progressElement = document.querySelector('[data-progress]') as HTMLElement
+      if (progressElement) {
+        const progress = parseInt(progressElement.textContent?.replace('%', '') || '0')
+        if (progress >= 100) {
+          resolve(LaundryKuWebsiteClient)
+        } else {
+          setTimeout(checkProgress, 100)
+        }
+      } else {
+        setTimeout(checkProgress, 100)
+      }
+    }
+    
+    // Start checking progress after a short delay
+    setTimeout(checkProgress, 500)
+  })
+}, {
   ssr: false,
   loading: LoadingScreen
 })
