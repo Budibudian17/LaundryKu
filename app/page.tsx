@@ -424,17 +424,16 @@ const LaundryKuWebsiteClient = () => {
         </div>
       )}
 
-      {/* Promo Banner */}
-      <div className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-lime-400 text-green-900 py-2 px-4 text-center relative overflow-hidden">
-        <div className="flex items-center justify-center space-x-2 text-xs sm:text-sm font-semibold">
-          <Gift className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-          <span className="truncate">🎉 PROMO SPESIAL: Diskon 20% untuk pelanggan baru! Hubungi kami untuk detail</span>
-          <Phone className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-        </div>
-      </div>
-
       {/* Header */}
-      <header className="sticky top-0 z-50 shadow-lg" style={{ backgroundColor: "#028446" }}>
+      <header className="fixed top-0 left-0 right-0 z-50 shadow-lg" style={{ backgroundColor: "#028446" }}>
+        {/* Promo Banner */}
+        <div className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-lime-400 text-green-900 py-2 px-4 text-center relative overflow-hidden">
+          <div className="flex items-center justify-center space-x-2 text-xs sm:text-sm font-semibold">
+            <Gift className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+            <span className="truncate">🎉 PROMO SPESIAL: Diskon 20% untuk pelanggan baru! Hubungi kami untuk detail</span>
+            <Phone className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+          </div>
+        </div>
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo */}
@@ -515,7 +514,7 @@ const LaundryKuWebsiteClient = () => {
       {/* Hero Section */}
       <section
         id="home"
-        className={`relative bg-gradient-to-br from-gray-50 via-white to-green-50/30 py-12 sm:py-16 lg:py-24 overflow-hidden transition-all duration-500 ${
+        className={`relative bg-gradient-to-br from-gray-50 via-white to-green-50/30 pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 lg:pb-24 overflow-hidden transition-all duration-500 ${
           visibleSections.has('home') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
