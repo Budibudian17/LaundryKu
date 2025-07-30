@@ -3,21 +3,26 @@
   
   # 🧺 LaundryKu Premium
   
-  ### Premium Laundry Service Website
+  ### Website Redesign Project
   
+  [![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-000000?style=for-the-badge&logo=vercel)](https://laundryku-kappa.vercel.app/)
   [![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
   [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.3-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-  [![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
   [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
   
-  *Higienis • Halal • Berkualitas*
+  *A modern redesign of LaundryKu Premium website*
+  
+  **🌐 Live Website**: [https://laundryku-kappa.vercel.app/](https://laundryku-kappa.vercel.app/)
+  
+
 </div>
 
 ---
 
 ## 📋 Table of Contents
 
+- [🎯 Project Overview](#-project-overview)
 - [✨ Features](#-features)
 - [🚀 Getting Started](#-getting-started)
 - [🛠️ Tech Stack](#️-tech-stack)
@@ -31,6 +36,34 @@
 
 ---
 
+## 🎯 Project Overview
+
+This is a **modern redesign** of the LaundryKu Premium website, built with Next.js 14 and TypeScript. The project showcases a complete overhaul of the original website with enhanced UI/UX, improved responsiveness, and advanced security features.
+
+### 🎨 **Redesign Highlights**
+- **Modern Design System** - Complete visual overhaul with premium laundry branding
+- **Enhanced User Experience** - Improved navigation and interactive elements
+- **Mobile-First Approach** - Fully responsive design for all devices
+- **Performance Optimization** - Fast loading times and smooth animations
+- **Security Enhancement** - Advanced anti-inspect and privacy protection features
+
+### 🌐 **Live Demo**
+- **Website**: [https://laundryku-kappa.vercel.app/](https://laundryku-kappa.vercel.app/)
+- **Deployed on**: Vercel
+- **Status**: Live and fully functional
+
+### 📝 **Disclaimer**
+This is a redesign project for educational and portfolio purposes. All content, branding, and business information belong to **LaundryKu Premium**. This project demonstrates modern web development practices and design implementation.
+
+### 🔄 **What's Different from Original**
+- **Modern Tech Stack**: Next.js 14, TypeScript, Tailwind CSS
+- **Enhanced UI/UX**: Improved design system and user experience
+- **Advanced Features**: Anti-inspect protection, loading animations
+- **Better Performance**: Optimized images and code structure
+- **Mobile-First**: Fully responsive design approach
+
+---
+
 ## ✨ Features
 
 ### 🎯 Core Features
@@ -41,6 +74,7 @@
 - **SEO Optimized** - Meta tags and structured data
 - **Anti-Inspect Protection** - Advanced security to prevent developer tools access
 - **Privacy Protection** - Comprehensive measures to protect website content
+- **Performance Optimized** - Fast loading with optimized images and code
 
 ### 🧺 Laundry Services
 - **Laundry Kilo** - Affordable per-kilogram service
@@ -74,8 +108,8 @@
 ### Quick Start
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/laundryku.git
-cd laundryku
+git clone https://github.com/yourusername/laundryku-redesign.git
+cd laundryku-redesign
 
 # Install dependencies
 pnpm install
@@ -85,6 +119,9 @@ pnpm dev
 
 # Open http://localhost:3000
 ```
+
+### 🚀 **Live Demo**
+Visit the live website: **[https://laundryku-kappa.vercel.app/](https://laundryku-kappa.vercel.app/)**
 
 ---
 
@@ -153,7 +190,7 @@ Beautiful animations, smooth transitions, and intuitive user interface.
 --green-800: #028446    /* Main brand color */
 --green-700: #059669    /* Secondary green */
 --green-600: #10B981    /* Accent green */
---yellow-400: #FBBF24   /* Warning/CTA color */
+--yellow-400: #FBBF24   /* Second Main branc color */
 --yellow-500: #F59E0B   /* Darker yellow */
 
 /* Neutral Colors */
@@ -179,8 +216,8 @@ Beautiful animations, smooth transitions, and intuitive user interface.
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/yourusername/laundryku.git
-cd laundryku
+git clone https://github.com/yourusername/laundryku-redesign.git
+cd laundryku-redesign
 ```
 
 ### 2. Install Dependencies
@@ -258,9 +295,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-**MIT License** - Feel free to use this project for your own laundry business!
+**MIT License** - Feel free to use this redesign as a reference for your own projects!
 
 </div>
+
+### 📝 **Important Notes**
+- This is a **redesign project** for educational purposes
+- All business content and branding belong to **LaundryKu Premium**
+- The original business is not affiliated with this redesign
+- This project demonstrates modern web development practices
 
 ---
 
@@ -287,7 +330,7 @@ We welcome contributions! Please feel free to submit a Pull Request.
 
 <div align="center">
 
-### 🧺 LaundryKu Premium
+### 🧺 LaundryKu Premium (Original Business)
 
 **📍 Outlets:**
 - **Cirendeu**: Jln. Cirendeu Raya No.40 D, Tangerang Selatan
@@ -298,14 +341,22 @@ We welcome contributions! Please feel free to submit a Pull Request.
 - **WhatsApp**: [0813-1549-4196](https://api.whatsapp.com/send?phone=6281315494196)
 - **Instagram**: [@laundrykupremium](https://www.instagram.com/laundrykupremium/)
 
-**🌐 Website**: [laundryku.com](https://laundryku.com)
+**🌐 Original Website**: [laundryku.com](https://laundryku.com)
+
+---
+
+### 🎨 **Redesign Project**
+
+**🌐 Live Demo**: [https://laundryku-kappa.vercel.app/](https://laundryku-kappa.vercel.app/)
+
+**📧 Developer Contact**: For questions about this redesign project
 
 ---
 
 <div align="center">
 
-**Made with ❤️ for the laundry industry**
+**Made with ❤️ for educational and portfolio purposes**
 
-*Higienis • Halal • Berkualitas*
+*Modern Web Development • UI/UX Design • Next.js*
 
 </div>
