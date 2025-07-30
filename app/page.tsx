@@ -32,6 +32,7 @@ import {
   Baby,
   Bed,
   Home,
+  AlertTriangle,
 } from "lucide-react"
 
 // Create a client-only version of the component
@@ -39,6 +40,147 @@ const LaundryKuWebsiteClient = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [customerCount, setCustomerCount] = useState(2000)
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set())
+  const [showPrivacyWarning, setShowPrivacyWarning] = useState(false)
+
+  // Anti-inspect functionality
+  useEffect(() => {
+    const preventInspect = (e: KeyboardEvent) => {
+      // Prevent F12
+      if (e.key === 'F12') {
+        e.preventDefault()
+        setShowPrivacyWarning(true)
+        return false
+      }
+      
+      // Prevent Ctrl+Shift+I (Windows) or Cmd+Option+I (Mac)
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
+        e.preventDefault()
+        setShowPrivacyWarning(true)
+        return false
+      }
+      
+      // Prevent Ctrl+Shift+C (Windows) or Cmd+Option+C (Mac)
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'C') {
+        e.preventDefault()
+        setShowPrivacyWarning(true)
+        return false
+      }
+      
+      // Prevent Ctrl+U (View Source)
+      if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
+        e.preventDefault()
+        setShowPrivacyWarning(true)
+        return false
+      }
+      
+      // Prevent Ctrl+Shift+J (Console)
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'J') {
+        e.preventDefault()
+        setShowPrivacyWarning(true)
+        return false
+      }
+    }
+
+    const preventRightClick = (e: MouseEvent) => {
+      e.preventDefault()
+      setShowPrivacyWarning(true)
+      return false
+    }
+
+    const preventDevTools = () => {
+      const devtools = {
+        open: false,
+        orientation: null
+      }
+      
+      const threshold = 160
+      
+      setInterval(() => {
+        const widthThreshold = window.outerWidth - window.innerWidth > threshold
+        const heightThreshold = window.outerHeight - window.innerHeight > threshold
+        
+        if (widthThreshold || heightThreshold) {
+          if (!devtools.open) {
+            devtools.open = true
+            setShowPrivacyWarning(true)
+          }
+        } else {
+          devtools.open = false
+        }
+      }, 500)
+    }
+
+    // Add event listeners
+    document.addEventListener('keydown', preventInspect)
+    document.addEventListener('contextmenu', preventRightClick)
+    preventDevTools()
+
+    // Disable text selection
+    document.addEventListener('selectstart', (e) => e.preventDefault())
+    document.addEventListener('dragstart', (e) => e.preventDefault())
+
+    // Additional protection
+    const preventInspectElement = () => {
+      const devtools = {
+        open: false,
+        orientation: null
+      }
+      
+      const threshold = 160
+      
+      setInterval(() => {
+        const widthThreshold = window.outerWidth - window.innerWidth > threshold
+        const heightThreshold = window.outerHeight - window.innerHeight > threshold
+        
+        if (widthThreshold || heightThreshold) {
+          if (!devtools.open) {
+            devtools.open = true
+            setShowPrivacyWarning(true)
+            // Redirect to home page if devtools detected
+            setTimeout(() => {
+              window.location.href = window.location.origin
+            }, 3000)
+          }
+        } else {
+          devtools.open = false
+        }
+      }, 1000)
+    }
+
+    preventInspectElement()
+
+    // Prevent console access
+    const preventConsole = () => {
+      const originalLog = console.log
+      const originalWarn = console.warn
+      const originalError = console.error
+      const originalInfo = console.info
+      
+      console.log = (...args: any[]) => {
+        setShowPrivacyWarning(true)
+        return originalLog.apply(console, args)
+      }
+      console.warn = (...args: any[]) => {
+        setShowPrivacyWarning(true)
+        return originalWarn.apply(console, args)
+      }
+      console.error = (...args: any[]) => {
+        setShowPrivacyWarning(true)
+        return originalError.apply(console, args)
+      }
+      console.info = (...args: any[]) => {
+        setShowPrivacyWarning(true)
+        return originalInfo.apply(console, args)
+      }
+    }
+
+    preventConsole()
+
+    return () => {
+      document.removeEventListener('keydown', preventInspect)
+      document.removeEventListener('contextmenu', preventRightClick)
+    }
+  }, [])
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -218,6 +360,74 @@ const LaundryKuWebsiteClient = () => {
 
   return (
     <div className="min-h-screen bg-white font-sans" key="laundryku-app">
+      {/* Privacy Warning Modal */}
+      {showPrivacyWarning && (
+        <div className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border-4 border-green-500 relative overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute top-4 right-4 w-16 h-16 bg-green-400 rounded-full"></div>
+              <div className="absolute bottom-4 left-4 w-12 h-12 bg-yellow-400 rounded-full"></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-green-300 rounded-full"></div>
+            </div>
+            
+            <div className="relative z-10 text-center space-y-4">
+              {/* Icon */}
+              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto">
+                <AlertTriangle className="w-8 h-8 text-red-600" />
+              </div>
+              
+              {/* Title */}
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  🛡️ Keamanan Privasi
+                </h3>
+                <p className="text-sm text-gray-600">
+                  Akses Developer Tools tidak diizinkan untuk melindungi privasi dan keamanan website kami.
+                </p>
+              </div>
+              
+              {/* Message */}
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <p className="text-sm text-green-800 font-medium">
+                  <Shirt className="w-4 h-4 inline mr-2 text-green-600" />
+                  LaundryKu Premium - Layanan Laundry Terpercaya
+                </p>
+                <p className="text-xs text-green-700 mt-1">
+                  Untuk informasi layanan, silakan hubungi kami melalui WhatsApp atau telepon.
+                </p>
+              </div>
+              
+              {/* Contact Info */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-center space-x-2 text-sm">
+                  <Phone className="w-4 h-4 text-green-600" />
+                  <span className="font-semibold text-gray-900 allow-select">0813-1549-4196</span>
+                </div>
+                <div className="flex items-center justify-center space-x-2 text-sm">
+                  <Instagram className="w-4 h-4 text-pink-600" />
+                  <span className="font-semibold text-gray-900 allow-select">@laundryku.premium</span>
+                </div>
+              </div>
+              
+              {/* Button */}
+              <Button
+                onClick={() => setShowPrivacyWarning(false)}
+                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-full transition-all duration-300 hover:scale-105"
+              >
+                <Shield className="w-4 h-4 mr-2" />
+                Mengerti & Lanjutkan
+              </Button>
+              
+              {/* Footer */}
+              <p className="text-xs text-gray-500">
+                Terima kasih telah menggunakan layanan LaundryKu Premium
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Promo Banner */}
       <div className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-lime-400 text-green-900 py-2 px-4 text-center relative overflow-hidden">
         <div className="flex items-center justify-center space-x-2 text-xs sm:text-sm font-semibold">
@@ -367,7 +577,7 @@ const LaundryKuWebsiteClient = () => {
                   onClick={() => window.open('tel:6281315494196', '_blank')}
                 >
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  Hubungi Sekarang
+                  <span className="allow-select">Hubungi Sekarang</span>
                   <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
 
@@ -674,7 +884,7 @@ const LaundryKuWebsiteClient = () => {
                   onClick={() => window.open('tel:6281315494196', '_blank')}
                 >
                   <Phone className="w-4 h-4 mr-2" />
-                  0813-1549-4196
+                  <span className="allow-select">0813-1549-4196</span>
                 </Button>
                 <Button
                   size="lg"
@@ -877,11 +1087,11 @@ const LaundryKuWebsiteClient = () => {
               <ul className="space-y-1 sm:space-y-2 text-green-200 text-xs sm:text-sm">
                 <li className="flex items-center space-x-2">
                   <Phone className="w-3 h-3 sm:w-4 sm:h-4" />
-                  <span>0813-1549-4196</span>
+                  <span className="allow-select">0813-1549-4196</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <Instagram className="w-3 h-3 sm:w-4 sm:h-4" />
-                  <span>@laundryku.premium</span>
+                  <span className="allow-select">@laundryku.premium</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <MessageCircle className="w-3 h-3 sm:w-4 sm:h-4" />

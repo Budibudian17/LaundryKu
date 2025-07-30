@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/images/logo1.jpg" alt="LaundryKu Logo" width="200" height="200" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+  <img src="public/images/laundryku-logo.png" alt="LaundryKu Premium Logo" width="300" height="80" style="border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
   
   # 🧺 LaundryKu Premium
   
@@ -39,6 +39,8 @@
 - **Interactive Elements** - Hover effects and micro-interactions
 - **Loading Screen** - Beautiful branded loading experience
 - **SEO Optimized** - Meta tags and structured data
+- **Anti-Inspect Protection** - Advanced security to prevent developer tools access
+- **Privacy Protection** - Comprehensive measures to protect website content
 
 ### 🧺 Laundry Services
 - **Laundry Kilo** - Affordable per-kilogram service
@@ -51,6 +53,14 @@
 - **Interactive Maps** - Direct links to Google Maps
 - **WhatsApp Integration** - Direct contact buttons
 - **Instagram Gallery** - Social media integration
+
+### 🛡️ Security Features
+- **Anti-Inspect Protection** - Prevents F12, Ctrl+Shift+I, and other developer tools
+- **Right-Click Disabled** - Protects content from context menu access
+- **Text Selection Control** - Prevents unauthorized copying with selective enable
+- **DevTools Detection** - Automatically detects and responds to developer tools
+- **Console Protection** - Monitors and prevents console access
+- **Privacy Warning Modal** - User-friendly security notifications with laundry theme
 
 ---
 
@@ -105,14 +115,45 @@ pnpm dev
 
 <div align="center">
 
-### 🏠 Homepage
-![Homepage](https://via.placeholder.com/800x400/028446/FFFFFF?text=LaundryKu+Homepage)
+### 🏠 Homepage & Hero Section
+![Homepage](public/images/laundry.png)
+*Professional laundry team and hero section with modern design*
 
-### 📱 Mobile Responsive
-![Mobile](https://via.placeholder.com/400x600/028446/FFFFFF?text=Mobile+View)
+### 📱 Mobile Responsive Design
+![Mobile](public/images/responsivemobile.png)
+*Fully responsive design that works perfectly on all mobile devices*
 
-### 🧺 Services Section
-![Services](https://via.placeholder.com/800x400/028446/FFFFFF?text=Services+Section)
+### 🧺 Services & Features
+![Services](public/images/LaundryKuu.png)
+*Comprehensive laundry services showcase with pickup & delivery options*
+
+### 🏢 Company Branding
+![Logo](public/images/laundryku-logo.png)
+*LaundryKu Premium official logo and branding*
+
+### 🎨 Design Showcase
+![Design](public/images/logo1.jpg)
+*Modern and clean design with premium laundry service branding*
+
+</div>
+
+---
+
+## 🎯 Key Features Showcase
+
+<div align="center">
+
+### 📱 **Responsive Design**
+Our website is fully responsive and works perfectly on all devices - from mobile phones to desktop computers.
+
+### 🛡️ **Security Features**
+Advanced anti-inspect functionality to protect website content and user privacy.
+
+### ⚡ **Performance Optimized**
+Fast loading times with optimized images and modern web technologies.
+
+### 🎨 **Modern UI/UX**
+Beautiful animations, smooth transitions, and intuitive user interface.
 
 </div>
 
