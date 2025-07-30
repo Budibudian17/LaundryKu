@@ -116,24 +116,10 @@ pnpm dev
 <div align="center">
 
 ### 🏠 Homepage & Hero Section
-![Homepage](public/images/laundry.png)
-*Professional laundry team and hero section with modern design*
+![Homepage](public/images/laptop.png)
 
 ### 📱 Mobile Responsive Design
-![Mobile](public/images/responsivemobile.png)
-*Fully responsive design that works perfectly on all mobile devices*
-
-### 🧺 Services & Features
-![Services](public/images/LaundryKuu.png)
-*Comprehensive laundry services showcase with pickup & delivery options*
-
-### 🏢 Company Branding
-![Logo](public/images/laundryku-logo.png)
-*LaundryKu Premium official logo and branding*
-
-### 🎨 Design Showcase
-![Design](public/images/logo1.jpg)
-*Modern and clean design with premium laundry service branding*
+![Mobile](public/images/mobileresponsive.png)
 
 </div>
 
