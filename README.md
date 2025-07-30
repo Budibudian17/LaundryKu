@@ -51,9 +51,19 @@ This is a **modern redesign** of the LaundryKu Premium website, built with Next.
 - **Website**: [https://laundryku-kappa.vercel.app/](https://laundryku-kappa.vercel.app/)
 - **Deployed on**: Vercel
 - **Status**: Live and fully functional
+- **Developer Portfolio**: [https://hilmiportfoliodev.vercel.app/](https://hilmiportfoliodev.vercel.app/)
 
 ### 📝 **Disclaimer**
 This is a redesign project for educational and portfolio purposes. All content, branding, and business information belong to **LaundryKu Premium**. This project demonstrates modern web development practices and design implementation.
+
+### 🎓 **Study Case Project**
+This redesign is part of **Botokan Dibimbing Chapter 41** study case, where I was tasked with redesigning the LaundryKu Premium website to enhance my web development skills and showcase modern design practices.
+
+#### 📚 **About Botokan Dibimbing**
+- **Program**: Web Development Bootcamp
+- **Chapter**: 41 - Advanced UI/UX Design
+- **Objective**: Redesign existing website with modern technologies
+- **Focus**: Next.js, TypeScript, Tailwind CSS, and responsive design
 
 ### 🔄 **What's Different from Original**
 - **Modern Tech Stack**: Next.js 14, TypeScript, Tailwind CSS
@@ -122,6 +132,14 @@ pnpm dev
 
 ### 🚀 **Live Demo**
 Visit the live website: **[https://laundryku-kappa.vercel.app/](https://laundryku-kappa.vercel.app/)**
+
+<div align="center">
+
+![QR Code](https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://laundryku-kappa.vercel.app/)
+
+*Scan QR Code to visit the website*
+
+</div>
 
 ---
 
@@ -304,6 +322,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - All business content and branding belong to **LaundryKu Premium**
 - The original business is not affiliated with this redesign
 - This project demonstrates modern web development practices
+- **Study Case**: Part of Botokan Dibimbing Chapter 41 curriculum
+- **Developer**: Created by [Hilmi](https://hilmiportfoliodev.vercel.app/) for skill enhancement
 
 ---
 
@@ -349,7 +369,17 @@ We welcome contributions! Please feel free to submit a Pull Request.
 
 **🌐 Live Demo**: [https://laundryku-kappa.vercel.app/](https://laundryku-kappa.vercel.app/)
 
+**👨‍💻 Developer Portfolio**: [https://hilmiportfoliodev.vercel.app/](https://hilmiportfoliodev.vercel.app/)
+
 **📧 Developer Contact**: For questions about this redesign project
+
+<div align="center">
+
+![Portfolio QR Code](https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://hilmiportfoliodev.vercel.app/)
+
+*Scan QR Code to visit my portfolio*
+
+</div>
 
 ---
 
@@ -357,6 +387,8 @@ We welcome contributions! Please feel free to submit a Pull Request.
 
 **Made with ❤️ for educational and portfolio purposes**
 
-*Modern Web Development • UI/UX Design • Next.js*
+*Botokan Dibimbing Chapter 41 Study Case • Modern Web Development • UI/UX Design • Next.js*
+
+**👨‍💻 Developer**: [Hilmi](https://hilmiportfoliodev.vercel.app/)
 
 </div>
