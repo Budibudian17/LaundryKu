@@ -769,10 +769,10 @@ export default function BookingPage() {
 
       {/* Modal Custom Izin Lokasi */}
       {showLocationModal && (
-        <div className={`fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm transition-all duration-500 ${
+        <div className={`fixed inset-0 z-[9999] flex items-start justify-center min-h-screen bg-black/60 backdrop-blur-sm transition-all duration-500 ${
           isPageLoaded ? 'opacity-100' : 'opacity-0'
         }`}>
-          <div className={`bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 border-4 border-green-500 relative transition-all duration-700 delay-200 ${
+          <div className={`bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 p-8 border-4 border-green-500 relative transition-all duration-700 delay-200 mt-60 ${
             isPageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
             <div className="flex flex-col items-center text-center space-y-4">
