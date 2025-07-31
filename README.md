@@ -3,7 +3,7 @@
   
   # 🧺 LaundryKu Premium
   
-  ### Website Redesign Project
+  ### Modern Laundry Service Website with Booking & Tracking System
   
   [![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-000000?style=for-the-badge&logo=vercel)](https://laundryku-kappa.vercel.app/)
   [![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
@@ -11,7 +11,7 @@
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.3-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
   [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
   
-  *A modern redesign of LaundryKu Premium website*
+  *A modern laundry service website with integrated booking and tracking systems*
   
   **🌐 Live Website**: [https://laundryku-kappa.vercel.app/](https://laundryku-kappa.vercel.app/)
   
@@ -24,6 +24,8 @@
 
 - [🎯 Project Overview](#-project-overview)
 - [✨ Features](#-features)
+- [📅 Booking System](#-booking-system)
+- [📊 Tracking System](#-tracking-system)
 - [🚀 Getting Started](#-getting-started)
 - [🛠️ Tech Stack](#️-tech-stack)
 - [📱 Screenshots](#-screenshots)
@@ -38,10 +40,12 @@
 
 ## 🎯 Project Overview
 
-This is a **modern redesign** of the LaundryKu Premium website, built with Next.js 14 and TypeScript. The project showcases a complete overhaul of the original website with enhanced UI/UX, improved responsiveness, and advanced security features.
+This is a **modern laundry service website** built with Next.js 14 and TypeScript, featuring integrated booking and tracking systems. The project showcases a complete laundry service platform with enhanced UI/UX, real-time order tracking, and comprehensive booking management.
 
-### 🎨 **Redesign Highlights**
+### 🎨 **Key Features**
 - **Modern Design System** - Complete visual overhaul with premium laundry branding
+- **Integrated Booking System** - 4-step booking process with location validation
+- **Real-time Tracking** - Order status tracking with timeline visualization
 - **Enhanced User Experience** - Improved navigation and interactive elements
 - **Mobile-First Approach** - Fully responsive design for all devices
 - **Performance Optimization** - Fast loading times and smooth animations
@@ -49,6 +53,8 @@ This is a **modern redesign** of the LaundryKu Premium website, built with Next.
 
 ### 🌐 **Live Demo**
 - **Website**: [https://laundryku-kappa.vercel.app/](https://laundryku-kappa.vercel.app/)
+- **Booking System**: [https://laundryku-kappa.vercel.app/booking](https://laundryku-kappa.vercel.app/booking)
+- **Tracking System**: [https://laundryku-kappa.vercel.app/tracking](https://laundryku-kappa.vercel.app/tracking)
 - **Deployed on**: Vercel
 - **Status**: Live and fully functional
 - **UI/UX Designer Portfolio**: [https://hilmiportfoliodev.vercel.app/](https://hilmiportfoliodev.vercel.app/)
@@ -68,6 +74,8 @@ This redesign is part of **BootCamp Dibimbing Chapter 41** study case, where I w
 ### 🔄 **What's Different from Original**
 - **Modern Tech Stack**: Next.js 14, TypeScript, Tailwind CSS
 - **Enhanced UI/UX**: Improved design system and user experience
+- **Booking System**: Complete 4-step booking process with location validation
+- **Tracking System**: Real-time order tracking with timeline
 - **Advanced Features**: Anti-inspect protection, loading animations
 - **Better Performance**: Optimized images and code structure
 - **Mobile-First**: Fully responsive design approach
@@ -87,17 +95,39 @@ This redesign is part of **BootCamp Dibimbing Chapter 41** study case, where I w
 - **Privacy Protection** - Comprehensive measures to protect website content
 - **Performance Optimized** - Fast loading with optimized images and code
 
+### 📅 **Booking System Features**
+- **4-Step Booking Process** - Streamlined booking experience
+- **Service Selection** - Multiple laundry services with pricing
+- **Location Validation** - Google Maps integration with area restrictions
+- **Pickup Scheduling** - Date and time selection with availability
+- **Customer Information** - Comprehensive customer data collection
+- **Area Restrictions** - Pickup service limited to Jakarta Selatan & Tangerang Selatan
+- **Real-time Validation** - Instant feedback on form inputs
+- **Booking Confirmation** - Success notifications and redirects
+
+### 📊 **Tracking System Features**
+- **Order Search** - Search by order number and phone number
+- **Real-time Status** - Live order status updates
+- **Timeline Visualization** - Step-by-step order progress
+- **Order Details** - Comprehensive order information display
+- **Contact Integration** - Direct WhatsApp and phone contact
+- **Demo Data** - Testing functionality with sample orders
+- **Mobile Responsive** - Optimized for all device sizes
+
 ### 🧺 Laundry Services
-- **Laundry Kilo** - Affordable per-kilogram service
-- **Laundry Premium** - Premium care with special treatment
-- **Pickup & Delivery** - Free pickup for Jakarta Selatan & Tangerang Selatan
-- **Specialized Services** - Shoes, carpets, baby items, strollers, bed covers, curtains
+- **Laundry Kilo** - Affordable per-kilogram service (Rp 8.000/kg)
+- **Laundry Premium** - Premium care with special treatment (Rp 12.000/kg)
+- **Laundry Sepatu** - Professional shoe cleaning (Rp 25.000/pasang)
+- **Laundry Karpet** - Deep carpet cleaning (Rp 15.000/m²)
+- **Laundry Perlengkapan Bayi** - Baby items care (Rp 10.000/kg)
+- **Laundry Bed Cover** - Bed cover and sheet cleaning (Rp 20.000/set)
 
 ### 📍 Location Features
 - **Multiple Outlets** - Cirendeu, Bona Indah, Karet Pedurenan
 - **Interactive Maps** - Direct links to Google Maps
 - **WhatsApp Integration** - Direct contact buttons
 - **Instagram Gallery** - Social media integration
+- **Area Restrictions** - Pickup service for specific areas only
 
 ### 🛡️ Security Features
 - **Anti-Inspect Protection** - Prevents F12, Ctrl+Shift+I, and other developer tools
@@ -106,6 +136,92 @@ This redesign is part of **BootCamp Dibimbing Chapter 41** study case, where I w
 - **DevTools Detection** - Automatically detects and responds to developer tools
 - **Console Protection** - Monitors and prevents console access
 - **Privacy Warning Modal** - User-friendly security notifications with laundry theme
+
+---
+
+## 📅 Booking System
+
+### 🎯 **4-Step Booking Process**
+
+#### **Step 1: Service Selection**
+- Choose from 6 different laundry services
+- View pricing and features for each service
+- Popular service highlighting
+- Service comparison and benefits
+
+#### **Step 2: Location Validation**
+- Google Maps integration for address selection
+- Automatic area detection (Jakarta Selatan & Tangerang Selatan)
+- Real-time location validation
+- Pickup service availability check
+
+#### **Step 3: Pickup Scheduling**
+- Calendar date selection
+- Time slot availability (6 time slots)
+- Pickup confirmation
+- Service summary display
+
+#### **Step 4: Customer Information**
+- Customer name and contact details
+- Pickup address input
+- Additional notes and instructions
+- Order summary and confirmation
+
+### 🗺️ **Location Features**
+- **Google Maps Integration** - Interactive map for address selection
+- **Area Validation** - Automatic detection of serviceable areas
+- **Pickup Restrictions** - Limited to Jakarta Selatan & Tangerang Selatan
+- **Real-time Feedback** - Instant validation and status updates
+
+### 💰 **Pricing Structure**
+- **Laundry Kilo**: Rp 8.000/kg
+- **Laundry Premium**: Rp 12.000/kg
+- **Laundry Sepatu**: Rp 25.000/pasang
+- **Laundry Karpet**: Rp 15.000/m²
+- **Laundry Perlengkapan Bayi**: Rp 10.000/kg
+- **Laundry Bed Cover**: Rp 20.000/set
+
+### 🚚 **Pickup & Delivery**
+- **Free Shipping** - For orders minimum 5kg
+- **Service Areas** - Jakarta Selatan & Tangerang Selatan only
+- **Time Slots** - 6 available pickup time slots
+- **Contact Notification** - Team will contact when laundry is ready
+
+---
+
+## 📊 Tracking System
+
+### 🔍 **Order Search**
+- **Order Number** - Search by unique order number
+- **Phone Number** - Verify with customer phone number
+- **Real-time Search** - Instant order lookup
+- **Demo Data** - Test with sample order: LK-2025-001
+
+### 📈 **Order Timeline**
+- **Order Received** - Initial order confirmation
+- **Pickup Status** - Pickup completion tracking
+- **Processing Status** - Laundry process monitoring
+- **Ready for Delivery** - Completion notification
+- **Delivered** - Final delivery confirmation
+
+### 📋 **Order Details**
+- **Customer Information** - Name, phone, address
+- **Service Details** - Service type, weight, pricing
+- **Pickup Information** - Date, time, location
+- **Delivery Estimate** - Expected completion date
+- **Total Amount** - Complete pricing breakdown
+
+### 📞 **Contact Integration**
+- **Direct Phone Call** - One-click calling
+- **WhatsApp Chat** - Direct messaging
+- **Customer Support** - 24/7 assistance
+- **Status Updates** - Automatic notifications
+
+### 🎨 **User Interface**
+- **Clean Design** - Modern, intuitive interface
+- **Progress Indicators** - Visual timeline representation
+- **Status Colors** - Color-coded status indicators
+- **Mobile Responsive** - Optimized for all devices
 
 ---
 
@@ -134,6 +250,9 @@ pnpm dev
 ### 🚀 **Live Demo**
 Visit the live website: **[https://laundryku-kappa.vercel.app/](https://laundryku-kappa.vercel.app/)**
 
+**📅 Booking System**: [https://laundryku-kappa.vercel.app/booking](https://laundryku-kappa.vercel.app/booking)
+**📊 Tracking System**: [https://laundryku-kappa.vercel.app/tracking](https://laundryku-kappa.vercel.app/tracking)
+
 <div align="center">
 
 ![QR Code](https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://laundryku-kappa.vercel.app/)
@@ -155,6 +274,8 @@ Visit the live website: **[https://laundryku-kappa.vercel.app/](https://laundryk
 | **Styling** | Tailwind CSS | 3.3 |
 | **UI Components** | shadcn/ui | Latest |
 | **Icons** | Lucide React | Latest |
+| **Maps** | Google Maps API | Latest |
+| **Date Handling** | date-fns | Latest |
 | **Package Manager** | pnpm | Latest |
 
 </div>
@@ -164,6 +285,7 @@ Visit the live website: **[https://laundryku-kappa.vercel.app/](https://laundryk
 - **Tailwind CSS** - Utility-first CSS framework
 - **shadcn/ui** - Re-usable component library
 - **Lucide Icons** - Beautiful icon set
+- **Google Maps** - Location and mapping services
 
 ---
 
@@ -177,6 +299,12 @@ Visit the live website: **[https://laundryku-kappa.vercel.app/](https://laundryk
 ### 📱 Mobile Responsive Design
 ![Mobile](public/images/mobileresponsive.png)
 
+### 📅 Booking System
+![Booking System](public/images/laundry.png)
+
+### 📊 Tracking System
+![Tracking System](public/images/LaundryKuu.png)
+
 </div>
 
 ---
@@ -187,6 +315,12 @@ Visit the live website: **[https://laundryku-kappa.vercel.app/](https://laundryk
 
 ### 📱 **Responsive Design**
 Our website is fully responsive and works perfectly on all devices - from mobile phones to desktop computers.
+
+### 📅 **Booking System**
+Complete 4-step booking process with location validation and real-time feedback.
+
+### 📊 **Tracking System**
+Real-time order tracking with timeline visualization and status updates.
 
 ### 🛡️ **Security Features**
 Advanced anti-inspect functionality to protect website content and user privacy.
@@ -277,6 +411,9 @@ pnpm start
 # Next.js Configuration
 NEXT_PUBLIC_SITE_URL=https://laundryku.com
 NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=GA_MEASUREMENT_ID
+
+# Google Maps API
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 
 # Contact Information
 NEXT_PUBLIC_WHATSAPP_NUMBER=6281315494196
@@ -370,6 +507,10 @@ We welcome contributions! Please feel free to submit a Pull Request.
 
 **🌐 Live Demo**: [https://laundryku-kappa.vercel.app/](https://laundryku-kappa.vercel.app/)
 
+**📅 Booking System**: [https://laundryku-kappa.vercel.app/booking](https://laundryku-kappa.vercel.app/booking)
+
+**📊 Tracking System**: [https://laundryku-kappa.vercel.app/tracking](https://laundryku-kappa.vercel.app/tracking)
+
 **🎨 UI/UX Designer Portfolio**: [https://hilmiportfoliodev.vercel.app/](https://hilmiportfoliodev.vercel.app/)
 
 **📧 Designer Contact**: For questions about this redesign project
@@ -388,7 +529,7 @@ We welcome contributions! Please feel free to submit a Pull Request.
 
 **Made with ❤️ for educational and portfolio purposes**
 
-*BootCamp Dibimbing Chapter 41 UI/UX Design Study Case • Modern Design Principles • User Experience • Next.js*
+*BootCamp Dibimbing Chapter 41 UI/UX Design Study Case • Modern Design Principles • User Experience • Next.js • Booking System • Tracking System*
 
 **🎨 UI/UX Designer**: [Hilmi](https://hilmiportfoliodev.vercel.app/)
 
