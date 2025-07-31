@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -38,6 +39,8 @@ export default function BookingPage() {
   
   // Tambah state untuk area/kota
   const [selectedCity, setSelectedCity] = useState("");
+  const [showAreaValidationModal, setShowAreaValidationModal] = useState(false);
+  const [selectedAreaData, setSelectedAreaData] = useState<{city?: string; district?: string; isPickupSupported: boolean} | null>(null);
   const pickupCities = ["Jakarta Selatan", "Tangerang Selatan"];
   const allCities = [
     "Jakarta Selatan",
@@ -50,6 +53,7 @@ export default function BookingPage() {
   ];
   
   const { showAlert, AlertComponent } = useCustomAlert()
+  const router = useRouter();
 
   // Animasi transisi masuk
   useEffect(() => {
@@ -133,6 +137,8 @@ export default function BookingPage() {
       setStep(2)
     } else if (step === 2 && pickupDate && pickupTime) {
       setStep(3)
+    } else if (step === 3 && pickupDate && pickupTime) {
+      setStep(4)
     }
   }
 
@@ -151,6 +157,10 @@ export default function BookingPage() {
       true,
       true
     )
+    // Redirect ke halaman utama setelah 2 detik
+    setTimeout(() => {
+      router.push('/');
+    }, 2000);
   }
 
   // Area boundaries (approximate, can be refined)
@@ -207,13 +217,19 @@ export default function BookingPage() {
   const [mapsLocation, setMapsLocation] = useState<{ lat: number; lng: number; city?: string; district?: string; address?: string }>({ lat: -6.3, lng: 106.8 });
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-green-50 via-white to-yellow-50 relative overflow-hidden transition-all duration-1000 ${
-      isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-    }`}>
+    <div 
+      className={`min-h-screen bg-gradient-to-br from-green-50 via-white to-yellow-50 relative overflow-hidden transition-all duration-1000 ${
+        isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
+      suppressHydrationWarning
+    >
       {/* Background Decorative Elements */}
-      <div className={`absolute inset-0 pointer-events-none transition-all duration-1000 delay-200 ${
-        isPageLoaded ? 'opacity-100' : 'opacity-0'
-      }`}>
+      <div 
+        className={`absolute inset-0 pointer-events-none transition-all duration-1000 delay-200 ${
+          isPageLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        suppressHydrationWarning
+      >
         <div className="absolute top-20 right-20 w-64 h-64 bg-green-200 rounded-full opacity-20 blur-3xl animate-pulse" />
         <div className="absolute bottom-20 left-20 w-48 h-48 bg-yellow-200 rounded-full opacity-30 blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
         <div className="absolute top-1/2 right-1/4 w-32 h-32 bg-green-300 rounded-full opacity-15 animate-pulse" style={{ animationDelay: '2s' }} />
@@ -222,9 +238,13 @@ export default function BookingPage() {
       </div>
 
       {/* Header */}
-      <header className={`shadow-lg relative z-10 transition-all duration-1000 delay-300 ${
-        isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
-      }`} style={{ backgroundColor: '#028446' }}>
+      <header 
+        className={`shadow-lg relative z-10 transition-all duration-1000 delay-300 ${
+          isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+        }`} 
+        style={{ backgroundColor: '#028446' }}
+        suppressHydrationWarning
+      >
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -248,9 +268,12 @@ export default function BookingPage() {
       </header>
 
       {/* Progress Steps */}
-      <div className={`bg-gradient-to-r from-green-600 to-green-700 text-white relative z-10 transition-all duration-1000 delay-500 ${
-        isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-      }`}>
+      <div 
+        className={`bg-gradient-to-r from-green-600 to-green-700 text-white relative z-10 transition-all duration-1000 delay-500 ${
+          isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+        suppressHydrationWarning
+      >
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-center space-x-4">
             {[1, 2, 3, 4].map((stepNumber) => (
@@ -279,9 +302,12 @@ export default function BookingPage() {
         </div>
       </div>
 
-      <div className={`container mx-auto px-4 py-8 relative z-10 transition-all duration-1000 delay-700 ${
-        isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-      }`}>
+      <div 
+        className={`container mx-auto px-4 py-8 relative z-10 transition-all duration-1000 delay-700 ${
+          isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+        suppressHydrationWarning
+      >
         <div className="max-w-5xl mx-auto">
           {/* Step 1: Service Selection */}
           {step === 1 && (
@@ -432,9 +458,17 @@ export default function BookingPage() {
                   Kembali
                 </Button>
                 <Button
-                  onClick={() => setStep(
-                    ["Jakarta Selatan", "Tangerang Selatan"].includes(mapsLocation.city || "") || ["Jakarta Selatan", "Tangerang Selatan"].includes(mapsLocation.district || "") ? 3 : 4
-                  )}
+                  onClick={() => {
+                    const isPickupSupported = ["Jakarta Selatan", "Tangerang Selatan"].includes(mapsLocation.city || "") ||
+                      ["Jakarta Selatan", "Tangerang Selatan"].includes(mapsLocation.district || "");
+                    
+                    setSelectedAreaData({
+                      city: mapsLocation.city,
+                      district: mapsLocation.district,
+                      isPickupSupported
+                    });
+                    setShowAreaValidationModal(true);
+                  }}
                   disabled={!(mapsLocation.city || mapsLocation.district)}
                   className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-10 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
@@ -759,6 +793,86 @@ export default function BookingPage() {
               >
                 Nanti Saja
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal Area Validation */}
+      {showAreaValidationModal && selectedAreaData && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm transition-all duration-500 animate-fade-in">
+          <div className={`bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 border-4 relative transition-all duration-700 delay-200 ${
+            showAreaValidationModal ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+          }`}>
+            <div className="flex flex-col items-center text-center space-y-4">
+              {/* Icon dan warna berdasarkan status pickup */}
+              <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-2 transition-all duration-500 delay-300 ${
+                selectedAreaData.isPickupSupported 
+                  ? 'bg-green-100' 
+                  : 'bg-yellow-100'
+              }`}>
+                <Truck className={`w-8 h-8 transition-all duration-500 delay-400 ${
+                  selectedAreaData.isPickupSupported 
+                    ? 'text-green-700' 
+                    : 'text-yellow-700'
+                }`} />
+              </div>
+              
+              {/* Judul */}
+              <h2 className={`text-2xl font-bold transition-all duration-500 delay-500 ${
+                selectedAreaData.isPickupSupported 
+                  ? 'text-green-800' 
+                  : 'text-yellow-800'
+              }`}>
+                {selectedAreaData.isPickupSupported 
+                  ? 'Layanan Pickup Tersedia! 🎉' 
+                  : 'Layanan Pickup Tidak Tersedia'
+                }
+              </h2>
+              
+              {/* Pesan */}
+              <p className={`font-medium transition-all duration-500 delay-600 ${
+                selectedAreaData.isPickupSupported 
+                  ? 'text-green-700' 
+                  : 'text-yellow-700'
+              }`}>
+                {selectedAreaData.isPickupSupported 
+                  ? `Wilayah ${selectedAreaData.city || selectedAreaData.district} mendukung layanan pickup & delivery. Tim kami akan mengambil pesanan Anda.`
+                  : `Wilayah ${selectedAreaData.city || selectedAreaData.district} belum mendukung layanan pickup & delivery. Silakan kunjungi outlet terdekat kami.`
+                }
+              </p>
+              
+              {/* Tombol */}
+              <div className="flex flex-col w-full space-y-2 mt-4 transition-all duration-500 delay-700">
+                {selectedAreaData.isPickupSupported ? (
+                  <Button
+                    className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-full transition-all duration-300 hover:scale-105"
+                    onClick={() => {
+                      const city = selectedAreaData.city || selectedAreaData.district || "";
+                      setSelectedCity(city);
+                      setShowAreaValidationModal(false);
+                      setStep(3);
+                    }}
+                  >
+                    Lanjutkan ke Pickup
+                  </Button>
+                ) : null}
+                
+                <Button
+                  variant="outline"
+                  className={`w-full py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 ${
+                    selectedAreaData.isPickupSupported
+                      ? 'border-green-300 text-green-700 hover:bg-green-50 hover:border-green-500'
+                      : 'border-yellow-300 text-yellow-700 hover:bg-yellow-50 hover:border-yellow-500'
+                  }`}
+                  onClick={() => {
+                    setShowAreaValidationModal(false);
+                    setSelectedAreaData(null);
+                  }}
+                >
+                  Pilih Lokasi Lain
+                </Button>
+              </div>
             </div>
           </div>
         </div>

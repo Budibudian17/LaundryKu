@@ -52,9 +52,14 @@ export function MapsPicker({ value, onChange, className }: MapsPickerProps) {
   useEffect(() => {
     setLoading(true);
     fetch(
-      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.lat}&lon=${position.lng}&zoom=18&addressdetails=1`
+      `/api/geocode?lat=${position.lat}&lon=${position.lng}`
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((data) => {
         setSelectedAddress(data.display_name || "");
         setCity(
@@ -71,6 +76,13 @@ export function MapsPicker({ value, onChange, className }: MapsPickerProps) {
             ""
         );
         setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching reverse geocode:', error);
+        setSelectedAddress("");
+        setCity("");
+        setDistrict("");
+        setLoading(false);
       });
   }, [position]);
 
@@ -82,14 +94,23 @@ export function MapsPicker({ value, onChange, className }: MapsPickerProps) {
       return;
     }
     setLoading(true);
-    const res = await fetch(
-      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
-        q
-      )}&addressdetails=1&limit=5`
-    );
-    const data = await res.json();
-    setSearchResults(data);
-    setLoading(false);
+    try {
+      // Try API route first, fallback to direct API
+      const res = await fetch(
+        `/api/geocode?q=${encodeURIComponent(q)}`
+      );
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      const data = await res.json();
+      setSearchResults(data);
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+      setSearchResults([]);
+      // Optional: show user-friendly error message
+    } finally {
+      setLoading(false);
+    }
   };
 
   // Select search result

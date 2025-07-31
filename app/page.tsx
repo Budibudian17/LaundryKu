@@ -41,7 +41,6 @@ const LaundryKuWebsiteClient = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [customerCount, setCustomerCount] = useState(2000)
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set())
-  const [showPrivacyWarning, setShowPrivacyWarning] = useState(false)
   // Tambah state untuk animasi transisi
   const [isPageLoaded, setIsPageLoaded] = useState(false)
   const [isAnimating, setIsAnimating] = useState(true)
@@ -53,142 +52,6 @@ const LaundryKuWebsiteClient = () => {
       setIsAnimating(false)
     }, 100)
     return () => clearTimeout(timer)
-  }, [])
-
-  // Anti-inspect functionality - Prevent DevTools access while allowing normal interactions
-  useEffect(() => {
-    const preventInspect = (e: KeyboardEvent) => {
-      // Prevent F12
-      if (e.key === 'F12') {
-        e.preventDefault()
-        setShowPrivacyWarning(true)
-        return false
-      }
-      
-      // Prevent Ctrl+Shift+I (Windows) or Cmd+Option+I (Mac)
-      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
-        e.preventDefault()
-        setShowPrivacyWarning(true)
-        return false
-      }
-      
-      // Prevent Ctrl+Shift+C (Windows) or Cmd+Option+C (Mac) - Developer Tools
-      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'C') {
-        e.preventDefault()
-        setShowPrivacyWarning(true)
-        return false
-      }
-      
-      // Prevent Ctrl+U (View Source)
-      if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
-        e.preventDefault()
-        setShowPrivacyWarning(true)
-        return false
-      }
-      
-      // Prevent Ctrl+Shift+J (Console)
-      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'J') {
-        e.preventDefault()
-        setShowPrivacyWarning(true)
-        return false
-      }
-    }
-
-    const preventRightClick = (e: MouseEvent) => {
-      e.preventDefault()
-      setShowPrivacyWarning(true)
-      return false
-    }
-
-    const preventDevTools = () => {
-      const devtools = {
-        open: false,
-        orientation: null
-      }
-      
-      const threshold = 160
-      
-      setInterval(() => {
-        const widthThreshold = window.outerWidth - window.innerWidth > threshold
-        const heightThreshold = window.outerHeight - window.innerHeight > threshold
-        
-        if (widthThreshold || heightThreshold) {
-          if (!devtools.open) {
-            devtools.open = true
-            setShowPrivacyWarning(true)
-          }
-        } else {
-          devtools.open = false
-        }
-      }, 500)
-    }
-
-    // Add event listeners - Prevent DevTools access
-    document.addEventListener('keydown', preventInspect)
-    document.addEventListener('contextmenu', preventRightClick)
-    preventDevTools()
-
-    // Additional protection
-    const preventInspectElement = () => {
-      const devtools = {
-        open: false,
-        orientation: null
-      }
-      
-      const threshold = 160
-      
-      setInterval(() => {
-        const widthThreshold = window.outerWidth - window.innerWidth > threshold
-        const heightThreshold = window.outerHeight - window.innerHeight > threshold
-        
-        if (widthThreshold || heightThreshold) {
-          if (!devtools.open) {
-            devtools.open = true
-            setShowPrivacyWarning(true)
-            // Redirect to home page if devtools detected
-            setTimeout(() => {
-              window.location.href = window.location.origin
-            }, 3000)
-          }
-        } else {
-          devtools.open = false
-        }
-      }, 1000)
-    }
-
-    preventInspectElement()
-
-    // Prevent console access
-    const preventConsole = () => {
-      const originalLog = console.log
-      const originalWarn = console.warn
-      const originalError = console.error
-      const originalInfo = console.info
-      
-      console.log = (...args: any[]) => {
-        setShowPrivacyWarning(true)
-        return originalLog.apply(console, args)
-      }
-      console.warn = (...args: any[]) => {
-        setShowPrivacyWarning(true)
-        return originalWarn.apply(console, args)
-      }
-      console.error = (...args: any[]) => {
-        setShowPrivacyWarning(true)
-        return originalError.apply(console, args)
-      }
-      console.info = (...args: any[]) => {
-        setShowPrivacyWarning(true)
-        return originalInfo.apply(console, args)
-      }
-    }
-
-    preventConsole()
-
-    return () => {
-      document.removeEventListener('keydown', preventInspect)
-      document.removeEventListener('contextmenu', preventRightClick)
-    }
   }, [])
 
   // Intersection Observer for scroll animations
@@ -371,78 +234,6 @@ const LaundryKuWebsiteClient = () => {
     <div className={`min-h-screen bg-white font-sans transition-all duration-1000 ${
       isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
     }`} key="laundryku-app">
-      {/* Privacy Warning Modal */}
-      {showPrivacyWarning && (
-        <div className={`fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-all duration-500 ${
-          isPageLoaded ? 'opacity-100' : 'opacity-0'
-        }`}>
-          <div className={`bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border-4 border-green-500 relative overflow-hidden transition-all duration-700 delay-200 ${
-            isPageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-          }`}>
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute top-4 right-4 w-16 h-16 bg-green-400 rounded-full"></div>
-              <div className="absolute bottom-4 left-4 w-12 h-12 bg-yellow-400 rounded-full"></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-green-300 rounded-full"></div>
-        </div>
-            
-            <div className="relative z-10 text-center space-y-4">
-              {/* Icon */}
-              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto">
-                <AlertTriangle className="w-8 h-8 text-red-600" />
-      </div>
-              
-              {/* Title */}
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  🛡️ Keamanan Privasi
-                </h3>
-                <p className="text-sm text-gray-600">
-                  Akses Developer Tools tidak diizinkan untuk melindungi privasi dan keamanan website kami.
-                </p>
-              </div>
-              
-              {/* Message */}
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <p className="text-sm text-green-800 font-medium">
-                  <Shirt className="w-4 h-4 inline mr-2 text-green-600" />
-                  LaundryKu Premium - Layanan Laundry Terpercaya
-                </p>
-                <p className="text-xs text-green-700 mt-1">
-                  Untuk informasi layanan, silakan hubungi kami melalui WhatsApp atau telepon.
-                </p>
-              </div>
-              
-              {/* Contact Info */}
-              <div className="space-y-2">
-                <div className="flex items-center justify-center space-x-2 text-sm">
-                  <Phone className="w-4 h-4 text-green-600" />
-                  <span className="font-semibold text-gray-900 allow-select">0813-1549-4196</span>
-                </div>
-                <div className="flex items-center justify-center space-x-2 text-sm">
-                  <Instagram className="w-4 h-4 text-pink-600" />
-                  <span className="font-semibold text-gray-900 allow-select">@laundryku.premium</span>
-                </div>
-              </div>
-              
-              {/* Button */}
-              <Button
-                onClick={() => setShowPrivacyWarning(false)}
-                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-full transition-all duration-300 hover:scale-105"
-              >
-                <Shield className="w-4 h-4 mr-2" />
-                Mengerti & Lanjutkan
-              </Button>
-              
-              {/* Footer */}
-              <p className="text-xs text-gray-500">
-                Terima kasih telah menggunakan layanan LaundryKu Premium
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Header */}
       <header className={`fixed top-0 left-0 right-0 z-50 shadow-lg transition-all duration-1000 delay-300 ${
         isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
@@ -618,16 +409,6 @@ const LaundryKuWebsiteClient = () => {
                     Booking Sekarang
                   </Button>
                 </Link>
-
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-green-700 text-green-700 hover:bg-green-700 hover:text-white bg-white px-6 sm:px-8 py-2.5 sm:py-3 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base"
-                  onClick={() => window.open('https://www.instagram.com/laundrykupremium/', '_blank')}
-                >
-                  <Instagram className="w-4 h-4 mr-2" />
-                  Lihat Gallery
-                </Button>
               </div>
             </div>
 
@@ -720,14 +501,13 @@ const LaundryKuWebsiteClient = () => {
             {services.map((service, index) => (
               <Card
                 key={index}
-                className={`bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 group relative overflow-hidden hover:scale-105 ${
+                className={`bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-200 ease-in-out group relative overflow-hidden hover:scale-105 ${
                   service.popular ? "ring-2 ring-yellow-400 transform scale-105" : ""
                 } ${
                   visibleSections.has('services') 
                     ? 'opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-8'
                 }`}
-                style={{ transitionDelay: `${index * 75}ms` }}
               >
                 {service.popular && (
                   <div className="absolute top-0 right-0 bg-gradient-to-l from-yellow-400 to-yellow-300 text-green-900 px-3 py-1 text-xs font-bold rounded-bl-lg">
@@ -735,7 +515,7 @@ const LaundryKuWebsiteClient = () => {
                   </div>
                 )}
                 <CardContent className="p-4 sm:p-6 text-center space-y-3 sm:space-y-4">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-200 ease-in-out">
                     <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-green-700" />
                   </div>
                   <div className="space-y-2">
@@ -745,7 +525,7 @@ const LaundryKuWebsiteClient = () => {
                   </div>
                   <Button
                     variant="outline"
-                    className="w-full border-2 border-green-700 text-green-700 hover:bg-green-700 hover:text-white transition-all bg-transparent rounded-full py-2 font-medium text-sm"
+                    className="w-full border-2 border-green-700 text-green-700 hover:bg-green-700 hover:text-white transition-all duration-200 ease-in-out bg-transparent rounded-full py-2 font-medium text-sm"
                   >
                     Info Lengkap
                   </Button>
