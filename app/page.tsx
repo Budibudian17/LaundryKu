@@ -5,6 +5,7 @@
 import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -41,6 +42,18 @@ const LaundryKuWebsiteClient = () => {
   const [customerCount, setCustomerCount] = useState(2000)
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set())
   const [showPrivacyWarning, setShowPrivacyWarning] = useState(false)
+  // Tambah state untuk animasi transisi
+  const [isPageLoaded, setIsPageLoaded] = useState(false)
+  const [isAnimating, setIsAnimating] = useState(true)
+
+  // Animasi transisi masuk
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPageLoaded(true)
+      setIsAnimating(false)
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [])
 
   // Anti-inspect functionality - Prevent DevTools access while allowing normal interactions
   useEffect(() => {
@@ -355,23 +368,29 @@ const LaundryKuWebsiteClient = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-white font-sans" key="laundryku-app">
+    <div className={`min-h-screen bg-white font-sans transition-all duration-1000 ${
+      isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+    }`} key="laundryku-app">
       {/* Privacy Warning Modal */}
       {showPrivacyWarning && (
-        <div className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border-4 border-green-500 relative overflow-hidden">
+        <div className={`fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-all duration-500 ${
+          isPageLoaded ? 'opacity-100' : 'opacity-0'
+        }`}>
+          <div className={`bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border-4 border-green-500 relative overflow-hidden transition-all duration-700 delay-200 ${
+            isPageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+          }`}>
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute top-4 right-4 w-16 h-16 bg-green-400 rounded-full"></div>
               <div className="absolute bottom-4 left-4 w-12 h-12 bg-yellow-400 rounded-full"></div>
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-green-300 rounded-full"></div>
-            </div>
+        </div>
             
             <div className="relative z-10 text-center space-y-4">
               {/* Icon */}
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto">
                 <AlertTriangle className="w-8 h-8 text-red-600" />
-              </div>
+      </div>
               
               {/* Title */}
               <div>
@@ -425,7 +444,9 @@ const LaundryKuWebsiteClient = () => {
       )}
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 shadow-lg" style={{ backgroundColor: "#028446" }}>
+      <header className={`fixed top-0 left-0 right-0 z-50 shadow-lg transition-all duration-1000 delay-300 ${
+        isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+      }`} style={{ backgroundColor: "#028446" }}>
         {/* Promo Banner */}
         <div className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-lime-400 text-green-900 py-2 px-4 text-center relative overflow-hidden">
           <div className="flex items-center justify-center space-x-2 text-xs sm:text-sm font-semibold">
@@ -461,6 +482,12 @@ const LaundryKuWebsiteClient = () => {
               <a href="#locations" className="text-white hover:text-yellow-300 font-medium transition-colors text-sm xl:text-base">
                 Locations
               </a>
+              <Link href="/booking" className="text-white hover:text-yellow-300 font-medium transition-colors text-sm xl:text-base">
+                Booking
+              </Link>
+              <Link href="/tracking" className="text-white hover:text-yellow-300 font-medium transition-colors text-sm xl:text-base">
+                Tracking
+              </Link>
             </nav>
 
             <div className="hidden lg:flex items-center space-x-3 xl:space-x-4">
@@ -484,23 +511,29 @@ const LaundryKuWebsiteClient = () => {
           {/* Mobile Navigation */}
           {isMenuOpen && (
             <div className="lg:hidden py-4 border-t border-green-700">
-              <nav className="flex flex-col space-y-3 px-4">
-                <a href="#home" className="text-white hover:text-yellow-300 font-medium text-sm">
+                <nav className="flex flex-col space-y-3 px-4">
+                  <a href="#home" className="text-white hover:text-yellow-300 font-medium text-sm">
                   Home
                 </a>
-                <a href="#services" className="text-white hover:text-yellow-300 font-medium text-sm">
+                  <a href="#services" className="text-white hover:text-yellow-300 font-medium text-sm">
                   Layanan
                 </a>
-                <a href="#pickup" className="text-white hover:text-yellow-300 font-medium text-sm">
+                  <a href="#pickup" className="text-white hover:text-yellow-300 font-medium text-sm">
                   Pick Up & Delivery
                 </a>
-                <a href="#locations" className="text-white hover:text-yellow-300 font-medium text-sm">
+                  <a href="#locations" className="text-white hover:text-yellow-300 font-medium text-sm">
                   Locations
                 </a>
+                  <Link href="/booking" className="text-white hover:text-yellow-300 font-medium text-sm">
+                    Booking
+                  </Link>
+                  <Link href="/tracking" className="text-white hover:text-yellow-300 font-medium text-sm">
+                    Tracking
+                  </Link>
                 <Button
                   variant="outline"
-                  className="border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-green-900 bg-transparent w-fit rounded-full px-4 py-2 font-semibold text-sm"
-                  onClick={() => window.open('tel:6281315494196', '_blank')}
+                    className="border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-green-900 bg-transparent w-fit rounded-full px-4 py-2 font-semibold text-sm"
+                    onClick={() => window.open('tel:6281315494196', '_blank')}
                 >
                   <Phone className="w-4 h-4 mr-2" />
                   Hubungi Kami
@@ -514,8 +547,8 @@ const LaundryKuWebsiteClient = () => {
       {/* Hero Section */}
       <section
         id="home"
-        className={`relative bg-gradient-to-br from-gray-50 via-white to-green-50/30 pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 lg:pb-24 overflow-hidden transition-all duration-500 ${
-          visibleSections.has('home') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        className={`relative bg-gradient-to-br from-gray-50 via-white to-green-50/30 pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 lg:pb-24 overflow-hidden transition-all duration-1000 delay-500 ${
+          visibleSections.has('home') && isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
         {/* Background Decorative Elements */}
@@ -576,6 +609,16 @@ const LaundryKuWebsiteClient = () => {
                   <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
 
+                <Link href="/booking">
+                  <Button
+                    size="lg"
+                    className="bg-yellow-400 hover:bg-yellow-500 text-green-900 px-6 sm:px-8 py-2.5 sm:py-3 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+                  >
+                    <Truck className="w-4 h-4 mr-2" />
+                    Booking Sekarang
+                  </Button>
+                </Link>
+
                 <Button
                   size="lg"
                   variant="outline"
@@ -626,8 +669,8 @@ const LaundryKuWebsiteClient = () => {
       {/* Features Section */}
       <section 
         id="features"
-        className={`py-12 sm:py-16 bg-white transition-all duration-500 delay-100 ${
-          visibleSections.has('features') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        className={`py-12 sm:py-16 bg-white transition-all duration-1000 delay-700 ${
+          visibleSections.has('features') && isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6">
@@ -658,8 +701,8 @@ const LaundryKuWebsiteClient = () => {
       {/* Services Section */}
       <section 
         id="services" 
-        className={`py-12 sm:py-16 bg-gray-50 transition-all duration-500 delay-150 ${
-          visibleSections.has('services') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        className={`py-12 sm:py-16 bg-gray-50 transition-all duration-1000 delay-900 ${
+          visibleSections.has('services') && isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6">
@@ -727,16 +770,16 @@ const LaundryKuWebsiteClient = () => {
       {/* Stats Section */}
       <section 
         id="stats"
-        className={`py-12 sm:py-16 bg-green-800 transition-all duration-500 delay-200 ${
-          visibleSections.has('stats') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        className={`py-12 sm:py-16 bg-green-800 transition-all duration-1000 delay-1100 ${
+          visibleSections.has('stats') && isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center text-white">
             <div className="space-y-1 sm:space-y-2">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-                {customerCount.toLocaleString()}+
-              </div>
+                  {customerCount.toLocaleString()}+
+                </div>
               <div className="text-green-200 font-medium text-xs sm:text-sm">Happy Customers</div>
             </div>
             <div className="space-y-1 sm:space-y-2">
@@ -758,8 +801,8 @@ const LaundryKuWebsiteClient = () => {
       {/* Testimonials Section */}
       <section 
         id="testimonials"
-        className={`py-12 sm:py-16 bg-white transition-all duration-500 delay-250 ${
-          visibleSections.has('testimonials') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        className={`py-12 sm:py-16 bg-white transition-all duration-1000 delay-1300 ${
+          visibleSections.has('testimonials') && isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6">
@@ -812,8 +855,8 @@ const LaundryKuWebsiteClient = () => {
       {/* Pickup & Delivery Section */}
       <section 
         id="pickup" 
-        className={`py-12 sm:py-16 bg-gradient-to-br from-green-50 via-yellow-50/30 to-green-50 transition-all duration-500 delay-300 ${
-          visibleSections.has('pickup') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        className={`py-12 sm:py-16 bg-gradient-to-br from-green-50 via-yellow-50/30 to-green-50 transition-all duration-1000 delay-1500 ${
+          visibleSections.has('pickup') && isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6">
@@ -870,6 +913,15 @@ const LaundryKuWebsiteClient = () => {
                     <p className="text-gray-600 text-xs sm:text-sm">Hanya untuk wilayah Jakarta Selatan & Tangerang Selatan</p>
                   </div>
                 </div>
+                <div className="flex items-center space-x-3 sm:space-x-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-green-700" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm sm:text-base">Notifikasi otomatis ketika selesai</h4>
+                    <p className="text-gray-600 text-xs sm:text-sm">Tim kami akan menghubungi Anda ketika laundry selesai</p>
+                  </div>
+                </div>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -917,8 +969,8 @@ const LaundryKuWebsiteClient = () => {
       {/* Outlets Section */}
       <section 
         id="locations" 
-        className={`py-12 sm:py-16 bg-white transition-all duration-500 delay-350 ${
-          visibleSections.has('locations') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        className={`py-12 sm:py-16 bg-white transition-all duration-1000 delay-1700 ${
+          visibleSections.has('locations') && isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6">
@@ -998,8 +1050,8 @@ const LaundryKuWebsiteClient = () => {
       {/* CTA Section */}
       <section 
         id="cta"
-        className={`py-12 sm:py-16 bg-green-800 text-white transition-all duration-500 delay-400 ${
-          visibleSections.has('cta') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        className={`py-12 sm:py-16 bg-green-800 text-white transition-all duration-1000 delay-1900 ${
+          visibleSections.has('cta') && isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6 text-center">
@@ -1038,9 +1090,9 @@ const LaundryKuWebsiteClient = () => {
       {/* Footer */}
       <footer 
         id="footer"
-        className={`bg-green-900 text-white py-8 sm:py-12 transition-all duration-500 delay-450 ${
-          visibleSections.has('footer') ? 'opacity-100 translate-y-0' : 'opacity-100 translate-y-0'
-        }`} 
+        className={`bg-green-900 text-white py-8 sm:py-12 transition-all duration-1000 delay-2100 ${
+          visibleSections.has('footer') && isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-100 translate-y-0'
+        }`}
         style={{ backgroundColor: "#028446" }}
       >
         <div className="container mx-auto px-4 sm:px-6">
@@ -1131,7 +1183,9 @@ const LaundryKuWebsiteClient = () => {
       </footer>
 
       {/* WhatsApp Float Button */}
-      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
+      <div className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 transition-all duration-1000 delay-2300 ${
+        isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}>
         <Button
           size="lg"
           className="rounded-full w-12 h-12 sm:w-14 sm:h-14 bg-green-500 hover:bg-green-600 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110"
