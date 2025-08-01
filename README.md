@@ -106,6 +106,7 @@ This redesign is part of **BootCamp Dibimbing Chapter 41** study case, where I w
 - **Booking Confirmation** - Success notifications and redirects
 
 ### 📊 **Tracking System Features**
+- **Order Search** - Search by order number and phone number
 - **Real-time Status** - Live order status updates
 - **Timeline Visualization** - Step-by-step order progress
 - **Order Details** - Comprehensive order information display
@@ -189,6 +190,12 @@ This redesign is part of **BootCamp Dibimbing Chapter 41** study case, where I w
 ---
 
 ## 📊 Tracking System
+
+### 🔍 **Order Search**
+- **Order Number** - Search by unique order number
+- **Phone Number** - Verify with customer phone number
+- **Real-time Search** - Instant order lookup
+- **Demo Data** - Test with sample order: LK-2025-001
 
 ### 📈 **Order Timeline**
 - **Order Received** - Initial order confirmation
